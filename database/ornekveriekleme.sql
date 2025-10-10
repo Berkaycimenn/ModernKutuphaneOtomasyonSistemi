@@ -49,3 +49,4 @@ VALUES
 (1, 1, 2, 15.00),   -- Ali 2 kahve aldý
 (1, 3, 1, 30.00),   -- Ali cheesecake aldý
 (2, 2, 1, 25.00);   -- Ayþe sandviç aldý
+
