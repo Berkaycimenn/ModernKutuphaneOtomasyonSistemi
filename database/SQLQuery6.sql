@@ -1,5 +1,5 @@
---Tablo Oluþturma
--- Kullanýcýlar Tablosu
+--Tablo OluÃ¾turma
+-- KullanÃ½cÃ½lar Tablosu
 CREATE TABLE Kullanicilar (
     KullaniciID INT IDENTITY(1,1) PRIMARY KEY,
     AdSoyad NVARCHAR(100) NOT NULL,
@@ -10,7 +10,7 @@ CREATE TABLE Kullanicilar (
     UyeTipi NVARCHAR(20) DEFAULT 'standart' CHECK (UyeTipi IN ('standart','ogrenci','vip')),
     Rol NVARCHAR(20) DEFAULT 'uye' CHECK (Rol IN ('uye','gorevli','admin'))
 );
--- Kullanýcý Ödemeleri Tablosu
+-- KullanÃ½cÃ½ Ã–demeleri Tablosu
 CREATE TABLE KullaniciOdemeleri (
     OdemeID INT IDENTITY(1,1) PRIMARY KEY,
     KullaniciID INT FOREIGN KEY REFERENCES Kullanicilar(KullaniciID),
@@ -27,17 +27,17 @@ CREATE TABLE Katlar (
 CREATE TABLE Odalar (
     OdaID INT IDENTITY(1,1) PRIMARY KEY,
     KatID INT FOREIGN KEY REFERENCES Katlar(KatID),
-    OdaTipi NVARCHAR(50),  -- VIP 2 kiþilik, VIP 3-4 kiþilik
+    OdaTipi NVARCHAR(50),  -- VIP 2 kiÃ¾ilik, VIP 3-4 kiÃ¾ilik
     Kapasite INT,
     Musait BIT DEFAULT 1
 );
--- Örnek kayýtlar
+-- Ã–rnek kayÃ½tlar
 INSERT INTO Katlar (KatID, Ad) VALUES 
 (1, 'Alt Kat - Sesli'), 
-(2, 'Üst Kat - Sessiz');
+(2, 'Ãœst Kat - Sessiz');
 
 -- Kitaplar
---kütüphanedeki kaynaklarýn temel bilgileri
+--kÃ¼tÃ¼phanedeki kaynaklarÃ½n temel bilgileri
 CREATE TABLE Kitaplar (
     KitapID INT IDENTITY(1,1) PRIMARY KEY,
     Baslik NVARCHAR(200) NOT NULL,
@@ -45,17 +45,17 @@ CREATE TABLE Kitaplar (
     YayinYili INT,
     Durum NVARCHAR(20) DEFAULT 'Mevcut' CHECK (Durum IN ('Mevcut','OduncAlindi'))
 );
---ISBN sütunu eklendi
+--ISBN sÃ¼tunu eklendi
 ALTER TABLE dbo.Kitaplar
 ADD ISBN NVARCHAR(20) NULL;
 
---Kitap Stok Sayýsý Ekleme
+--Kitap Stok SayÃ½sÃ½ Ekleme
 ALTER TABLE Kitaplar
 ADD StokSayisi INT DEFAULT 0;
 
 
--- Ödünç kayýtlarý
---kim hangi kitabý aldý, iade durumu
+-- Ã–dÃ¼nÃ§ kayÃ½tlarÃ½
+--kim hangi kitabÃ½ aldÃ½, iade durumu
 CREATE TABLE OduncAlmalar (
     OduncID INT IDENTITY(1,1) PRIMARY KEY,
     KullaniciID INT FOREIGN KEY REFERENCES Kullanicilar(KullaniciID),
@@ -64,29 +64,29 @@ CREATE TABLE OduncAlmalar (
     IadeTarihi DATE NULL
 );
 
--- Kafe ürünleri
+-- Kafe Ã¼rÃ¼nleri
 CREATE TABLE KafeUrunleri (
     UrunID INT IDENTITY(1,1) PRIMARY KEY,
     Ad NVARCHAR(100) NOT NULL,
-    Tip NVARCHAR(50),  -- Kahve, Sandviç, Tatlý
+    Tip NVARCHAR(50),  -- Kahve, SandviÃ§, TatlÃ½
     Fiyat DECIMAL(10,2) NOT NULL
 );
 
--- Menüler
+-- MenÃ¼ler
 CREATE TABLE Menuler (
     MenuID INT IDENTITY(1,1) PRIMARY KEY,
     Ad NVARCHAR(100),
     Fiyat DECIMAL(10,2)
 );
 
--- Menü içindeki ürünler
+-- MenÃ¼ iÃ§indeki Ã¼rÃ¼nler
 CREATE TABLE MenuDetaylari (
     DetayID INT IDENTITY(1,1) PRIMARY KEY,
     MenuID INT FOREIGN KEY REFERENCES Menuler(MenuID),
     UrunID INT FOREIGN KEY REFERENCES KafeUrunleri(UrunID)
 );
 
--- Sipariþler
+-- SipariÃ¾ler
 CREATE TABLE Siparisler (
     SiparisID INT IDENTITY(1,1) PRIMARY KEY,
     KullaniciID INT FOREIGN KEY REFERENCES Kullanicilar(KullaniciID),
@@ -94,7 +94,7 @@ CREATE TABLE Siparisler (
     Toplam DECIMAL(10,2)
 );
 
--- Sipariþ detaylarý
+-- SipariÃ¾ detaylarÃ½
 CREATE TABLE SiparisDetaylari (
     DetayID INT IDENTITY(1,1) PRIMARY KEY,
     SiparisID INT FOREIGN KEY REFERENCES Siparisler(SiparisID),
