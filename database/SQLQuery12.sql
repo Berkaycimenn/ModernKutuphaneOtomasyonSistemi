@@ -1,4 +1,4 @@
---Yeni Kullanýcý Ekleme
+--Yeni KullanÃ½cÃ½ Ekleme
 CREATE PROCEDURE sp_YeniKullaniciEkle
     @AdSoyad NVARCHAR(100),
     @Email NVARCHAR(100),
@@ -14,9 +14,9 @@ BEGIN
     SELECT SCOPE_IDENTITY() AS YeniKullaniciID;
 END;
 
---Kullanýmý
+--KullanÃ½mÃ½
 EXEC sp_YeniKullaniciEkle 
-    @AdSoyad = 'Zeynep Kýlýç', 
+    @AdSoyad = 'Zeynep KÃ½lÃ½Ã§', 
     @Email = 'zeynep@example.com',
     @Sifre = '44444',
     @Telefon = '05007778899',
@@ -25,7 +25,7 @@ EXEC sp_YeniKullaniciEkle
 	--Kontrol
 	SELECT * FROM Kullanicilar;
 
-	--Kitap Ödünç Alma
+	--Kitap Ã–dÃ¼nÃ§ Alma
 	CREATE PROCEDURE sp_KitapOduncAl
     @KullaniciID INT,
     @KitapID INT
@@ -34,27 +34,27 @@ BEGIN
     -- Kitap mevcut mu kontrol et
     IF EXISTS (SELECT 1 FROM Kitaplar WHERE KitapID = @KitapID AND Durum = 'Mevcut')
     BEGIN
-        -- Ödünç kaydý ekle
+        -- Ã–dÃ¼nÃ§ kaydÃ½ ekle
         INSERT INTO OduncAlmalar (KullaniciID, KitapID, OduncTarihi)
         VALUES (@KullaniciID, @KitapID, GETDATE());
 
-        -- Kitap durumunu güncelle
+        -- Kitap durumunu gÃ¼ncelle
         UPDATE Kitaplar
         SET Durum = 'OduncAlindi'
         WHERE KitapID = @KitapID;
 
-        PRINT 'Kitap ödünç verildi.';
+        PRINT 'Kitap Ã¶dÃ¼nÃ§ verildi.';
     END
     ELSE
     BEGIN
-        PRINT 'Kitap zaten ödünç alýnmýþ veya mevcut deðil!';
+        PRINT 'Kitap zaten Ã¶dÃ¼nÃ§ alÃ½nmÃ½Ã¾ veya mevcut deÃ°il!';
     END
 END;
 
---Kullanýmý
+--KullanÃ½mÃ½
 EXEC sp_KitapOduncAl @KullaniciID = 1, @KitapID = 2;
 
---Þipariþ Oluþturma
+--ÃžipariÃ¾ OluÃ¾turma
 CREATE PROCEDURE sp_SiparisOlustur
     @KullaniciID INT,
     @Urunler NVARCHAR(MAX) -- format: "UrunID:Adet;UrunID:Adet"
@@ -63,13 +63,13 @@ BEGIN
     DECLARE @SiparisID INT;
     DECLARE @Toplam DECIMAL(10,2) = 0;
 
-    -- Önce sipariþi ekle
+    -- Ã–nce sipariÃ¾i ekle
     INSERT INTO Siparisler (KullaniciID, Tarih, Toplam)
     VALUES (@KullaniciID, GETDATE(), 0);
 
     SET @SiparisID = SCOPE_IDENTITY();
 
-    -- Ürünleri parçala ve sipariþ detayýna ekle
+    -- ÃœrÃ¼nleri parÃ§ala ve sipariÃ¾ detayÃ½na ekle
     DECLARE @xml XML;
     SET @xml = '<root><r>' + REPLACE(REPLACE(@Urunler, ';', '</r><r>'), ':', '</r><r>') + '</r></root>';
 
@@ -101,18 +101,18 @@ BEGIN
 
     DROP TABLE #tmp;
 
-    -- Toplamý güncelle
+    -- ToplamÃ½ gÃ¼ncelle
     UPDATE Siparisler
     SET Toplam = @Toplam
     WHERE SiparisID = @SiparisID;
 
-    PRINT 'Sipariþ baþarýyla oluþturuldu.';
+    PRINT 'SipariÃ¾ baÃ¾arÃ½yla oluÃ¾turuldu.';
 END;
 
---Kullanýmý
+--KullanÃ½mÃ½
 EXEC sp_SiparisOlustur @KullaniciID = 1, @Urunler = '1:2;3:1';  
--- Ali 2 kahve + 1 cheesecake aldý
---Sipariþ Tablosu Ekle
+-- Ali 2 kahve + 1 cheesecake aldÃ½
+--SipariÃ¾ Tablosu Ekle
 INSERT INTO Siparisler (KullaniciID, Tarih)
 VALUES (1, GETDATE());
 SELECT * FROM Siparisler;
