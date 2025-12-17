@@ -1,0 +1,165 @@
+/* Genel Sıfırlama ve Font */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #F8F7F4; /* Hafif kirli beyaz arka plan */
+    color: #333;
+}
+
+/* Ana Konteyner - İki sütunlu yapıyı oluşturur */
+.about-container {
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* SOL BÖLÜM: Metin */
+.content-section {
+    flex: 1; /* Alandaki boşluğun yarısını kapla */
+    padding: 80px 100px; /* Büyük ekranlarda kenar boşlukları */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* İçeriği dikeyde ortala */
+    align-items: flex-start;
+    box-sizing: border-box;
+}
+
+.star-icon {
+    font-size: 30px;
+    color: #063508; /* Koyu yeşil tonu */
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+.main-title {
+    font-size: 60px;
+    color: #031004; /* Koyu yeşil tonu */
+    margin-top: 0;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+.description {
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 80%; /* Metin bloğunu daralt */
+    margin-bottom: 50px;
+}
+
+/* Vizyon ve Misyon Bölümü */
+.vision-mission .block {
+    margin-top: 30px;
+}
+
+.vision-mission h2 {
+    font-size: 20px;
+    color: #1E4620; /* Koyu yeşil tonu */
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.vision-mission p {
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+
+/* SAĞ BÖLÜM: Görsel */
+.image-section {
+    flex: 1; /* Alandaki boşluğun yarısını kapla */
+    background-color: #b59b71; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px; /* Görselin içindeki boşluk */
+    box-sizing: border-box;
+}
+
+.image-section img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1); /* Hafif gölge efekti */
+}
+
+/* **DUYARLILIK (RESPONSIVE) AYARLARI** */
+@media (max-width: 992px) {
+    /* İki sütunlu yapıyı tek sütuna çevir */
+    .about-container {
+        flex-direction: column;
+    }
+
+    .content-section {
+        padding: 50px 30px;
+        align-items: center; /* Mobil görünümde içeriği ortala */
+        text-align: center;
+    }
+    
+    .description, .vision-mission p {
+        max-width: 100%;
+    }
+
+    .image-section {
+        min-height: 400px; /* Mobil görünümde görsel alana yükseklik ver */
+    }
+}
+/* 1. Sol Bölümü Sabitleme */
+.content-section {
+    /* Mevcut stillere ek olarak: */
+    min-height: 100vh; /* Ekran yüksekliği kadar yer kapla */
+    /* ... diğer stiller ... */
+}
+
+/* 2. Sağdaki İki Görsel Bölümünü Dikey İstifleme */
+/* about-container içindeki tüm sağ kısımların doğru çalışması için bu stile ihtiyacımız var */
+.image-section,
+.image-section-2 {
+    flex: 1; 
+    /* Diğer stillerini koru */
+}
+
+/* Kaydırma Efekti İçin Yüksekliği Artırma (Zorunlu) */
+.about-container {
+    display: flex;
+    /* Fazladan kaydırma alanı sağlamak için min-height'ı artırıyoruz */
+}
+
+/* 3. Yeni Slogan Bölümünün Stilleri */
+.image-section-2 {
+    background-color: #1E4620; /* Koyu Yeşil Arka Plan */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh; /* Ekran yüksekliği kadar yer kapla */
+    padding: 100px;
+    box-sizing: border-box;
+}
+
+.slogan-content {
+    text-align: center;
+    color: white;
+}
+
+.slogan-text {
+    font-family: 'Playfair Display', serif; /* Şık font */
+    font-style: italic;
+    font-size: 55px;
+    line-height: 1.3;
+    margin-bottom: 30px;
+}
+
+.signature {
+    font-family: sans-serif;
+    font-size: 14px;
+    letter-spacing: 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding-top: 15px;
+    display: block;
+    margin-top: 30px;
+}
+
+/* NOT: Eğer Sloganınızın fontu (Playfair Display gibi) yoksa, 
+   onu HTML'nizin <head> kısmına eklemeniz gerekir! */
