@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giriş Sayfası</title>
+    <link rel="stylesheet" href="../css/giris_style.css">
+</head>
+<body>
+    
+   <form id="register-form" class="auth-form">
+    <div class="input-group">
+        <label for="reg-name">Adınız</label>
+        <input type="text" id="reg-name" name="name" required placeholder="Adınızı girin">
+    </div>
+
+    <div class="input-group">
+        <label for="reg-surname">Soyadınız</label>
+        <input type="text" id="reg-surname" name="surname" required placeholder="Soyadınızı girin">
+    </div>
+
+    <div class="input-group">
+        <label for="reg-email">E-posta Adresiniz</label>
+        <input type="email" id="reg-email" name="email" required placeholder="e.g. adiniz@gmail.com">
+    </div>
+
+    <div class="input-group">
+        <label for="reg-password">Şifre</label>
+        <input type="password" id="reg-password" name="password" required minlength="6" placeholder="En az 6 karakter">
+    </div>
+
+    <div class="input-group">
+        <label for="reg-password-confirm">Şifre Tekrar</label>
+        <input type="password" id="reg-password-confirm" name="password_confirm" required minlength="6" placeholder="Şifrenizi tekrar girin">
+    </div>
+    
+    <button type="submit" class="submit-btn">Hesap Oluştur</button>
+</form>
+
+</body>
+</html>
