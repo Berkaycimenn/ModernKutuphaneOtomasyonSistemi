@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kütüphane Cafe Menüsü</title>
+    <style>
+        /* --- TASARIM (CSS) --- */
+        body {
+            background-color: #fdfaf5; /* Arka plan rengi */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        /* Üst Kahverengi Banner */
+        .header {
+            width: 100%;
+            background-color: #797f6e;
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            font-size: 28px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .menu-container {
+            width: 90%;
+            max-width: 700px; /* Menü genişliği */
+            margin-top: 40px;
+            padding-bottom: 60px;
+        }
+
+        /* BÜYÜK MOR BUTONLAR */
+        .category-btn {
+            width: 100%;
+            padding: 45px 30px; /* Butonları iyice büyüttük */
+            margin-top: 25px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 24px;
+            font-weight: bold;
+            color: white;
+            text-align: left;
+            /* Mor ve Kahve geçişli tasarım */
+            background: linear-gradient(135deg, #7c7785 0%, #d7b8cc 100%);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .category-btn:hover {
+            transform: translateY(-5px); /* Üstüne gelince hafif yükselir */
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        /* AŞAĞI DOĞRU UZAYAN PANEL */
+        .content-panel {
+            max-height: 0; /* Başlangıçta gizli */
+            overflow: hidden;
+            background-color: white;
+            border-radius: 0 0 20px 20px;
+            transition: max-height 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        /* JS ile açılan panel durumu */
+        .content-panel.open {
+            max-height: 2000px; /* İçerik boyuna göre uzar */
+            border: 1px solid #ddd;
+            border-top: none;
+            padding-bottom: 10px;
+        }
+
+        /* ÜRÜN SATIRI TASARIMI */
+        .product-item {
+            display: flex;
+            justify-content: space-between; /* İsim solda, fiyat sağda */
+            align-items: center;
+            padding: 20px 30px;
+            border-bottom: 1px solid #f0f0f0;
+            font-size: 19px;
+            color: #333;
+        }
+
+        /* Fiyat Kutucuğu (Görseldeki gibi beyaz, gölgeli kutu) */
+        .price-tag {
+            background: #ffffff;
+            padding: 10px 20px;
+            border-radius: 12px;
+            font-weight: bold;
+            color: #333;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            min-width: 50px;
+            text-align: center;
+        }
+
+        .ml-info {
+            font-size: 14px;
+            color: #888;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">Kütüphane Cafe Menüsü</div>
+
+    <div class="menu-container">
+
+        <button class="category-btn">SICAK İÇECEKLER <span>+</span></button>
+        <div class="content-panel">
+            <div class="product-item"><span>Çay <small class="ml-info">100ml</small></span> <span class="price-tag">30₺</span></div>
+            <div class="product-item"><span>Fincan Çay <small class="ml-info">200ml</small></span> <span class="price-tag">50₺</span></div>
+            <div class="product-item"><span>Sıcak Çikolata <small class="ml-info">200ml</small></span> <span class="price-tag">100₺</span></div>
+            <div class="product-item"><span>Sahlep <small class="ml-info">200ml</small></span> <span class="price-tag">100₺</span></div>
+            <div class="product-item"><span>Kırmızı Orman Meyve Çayı</span> <span class="price-tag">80₺</span></div>
+            <div class="product-item"><span>Elma Tarçın</span> <span class="price-tag">100₺</span></div>
+            <div class="product-item"><span>Kış Çayı <small class="ml-info">365ml</small></span> <span class="price-tag">90₺</span></div>
+        </div>
+
+        <button class="category-btn">SOĞUK İÇECEKLER <span>+</span></button>
+        <div class="content-panel">
+            <div class="product-item"><span>Pet Su <small class="ml-info">400ml</small></span> <span class="price-tag">20₺</span></div>
+            <div class="product-item"><span>Cam Su <small class="ml-info">330ml</small></span> <span class="price-tag">30₺</span></div>
+            <div class="product-item"><span>Sade Soda <small class="ml-info">250ml</small></span> <span class="price-tag">20₺</span></div>
+            <div class="product-item"><span>Churchill <small class="ml-info">365ml</small></span> <span class="price-tag">60₺</span></div>
+            <div class="product-item"><span>Meyveli Soda (Çilek/Limon/Elmalı)</span> <span class="price-tag">70₺</span></div>
+        </div>
+
+        <button class="category-btn">KAHVELER <span>+</span></button>
+        <div class="content-panel">
+            <div class="product-item"><span>Espresso <small class="ml-info">22ml</small></span> <span class="price-tag">100₺</span></div>
+            <div class="product-item"><span>Double Espresso <small class="ml-info">44ml</small></span> <span class="price-tag">150₺</span></div>
+            <div class="product-item"><span>Americano <small class="ml-info">200ml</small></span> <span class="price-tag">120₺</span></div>
+            <div class="product-item"><span>Latte <small class="ml-info">200ml</small></span> <span class="price-tag">160₺</span></div>
+            <div class="product-item"><span>Caramel Macchiato</span> <span class="price-tag">200₺</span></div>
+            <div class="product-item"><span>Vanilla Caramel Latte</span> <span class="price-tag">200₺</span></div>
+        </div>
+
+        <button class="category-btn">TATLILAR <span>+</span></button>
+        <div class="content-panel">
+            <div class="product-item"><span>Classic Cookie</span> <span class="price-tag">60₺</span></div>
+            <div class="product-item"><span>Chocolate Cookie</span> <span class="price-tag">70₺</span></div>
+            <div class="product-item"><span>Macaroon</span> <span class="price-tag">100₺</span></div>
+            <div class="product-item"><span>Chocolate Muffin</span> <span class="price-tag">190₺</span></div>
+            <div class="product-item"><span>Cheese Cake</span> <span class="price-tag">200₺</span></div>
+            <div class="product-item"><span>Donut</span> <span class="price-tag">120₺</span></div>
+        </div>
+
+    </div>
+
+    <script>
+        // Tüm kategori butonlarını seçiyoruz
+        const buttons = document.querySelectorAll('.category-btn');
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function() {
+                // Tıklanan butonun altındaki paneli bulur
+                const panel = this.nextElementSibling;
+                
+                // Diğer açık panelleri kapatır (Akordiyon mantığı)
+                document.querySelectorAll('.content-panel').forEach(p => {
+                    if (p !== panel) {
+                        p.classList.remove('open');
+                        p.previousElementSibling.querySelector('span').textContent = '+';
+                    }
+                });
+
+                // Tıklananı açar/kapatır
+                panel.classList.toggle('open');
+                
+                // İşareti değiştir (+ veya -)
+                const span = this.querySelector('span');
+                span.textContent = panel.classList.contains('open') ? '-' : '+';
+            });
+        });
+    </script>
+</body>
+</html>

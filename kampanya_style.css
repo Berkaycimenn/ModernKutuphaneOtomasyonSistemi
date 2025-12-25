@@ -1,0 +1,94 @@
+/* Sayfa üstü navigasyonun yukarıda sabit kalmasını sağlar */
+header { 
+    position: sticky;
+    top: 0;
+    z-index: 1000; /* Diğer elementlerin üstünde kalması için */
+}
+
+/* Tüm elementler için temel sıfırlama (Box Model ayarı) */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Sayfa genel yerleşimi ve merkezi hizalama */
+body {
+    width: 100%;
+    min-height: 100vh; /* Ekran yüksekliğini tam kapla */
+    display: flex; 
+    justify-content: center; /* Yatayda ortala */
+    align-items: center;    /* Dikeyde ortala */
+    background-color: #e4ddcd; /* Arka plan krem rengi */
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+}
+
+/* 3D derinlik etkisi için kapsayıcı */
+.campaign-wrapper {
+    perspective: 1000px;
+}
+
+/* Kağıt kartı efekti: Hafif eğik ve gölgeli tasarım */
+.paper-card {
+    background: #f1bdbd; /* Kağıt rengi */
+    padding: 40px;
+    width: 350px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    position: relative;
+    border: 1px solid #eee;
+    transform: rotate(-2deg); /* Masaya atılmış kağıt gibi hafif eğik duruş */
+    transition: transform 0.3s ease; /* Hover etkisindeki geçiş yumuşaklığı */
+    cursor: pointer;
+}
+
+/* Fare ile üzerine gelindiğinde kağıdın düzelmesi ve büyümesi */
+.paper-card:hover {
+    transform: rotate(0deg) scale(1.05);
+}
+
+/* Kağıdın üstündeki dekoratif raptiye (iğne) efekti */
+.pin {
+    width: 20px;
+    height: 20px;
+    background-color: #e74c3c;
+    border-radius: 50%;
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+/* Kart içerisindeki üst başlık ve alt kesik çizgi */
+.title {
+    font-size: 1.2rem;
+    color: #8b5e3c;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    border-bottom: 1px dashed #ccc;
+    padding-bottom: 10px;
+}
+
+/* El yazısı görünümlü ana içerik alanı */
+.content {
+    font-family: 'Caveat', cursive; /* El yazısı fontu kullanımı */
+    font-size: 2rem;
+    line-height: 1.4;
+    color: #333;
+}
+
+/* İçerik içindeki vurgulanmış metinler */
+.content span {
+    color: #d35400;
+    font-weight: bold;
+}
+
+/* Kartın en altındaki küçük, yatık bilgilendirme metni */
+.footer {
+    margin-top: 30px;
+    font-size: 0.8rem;
+    color: #999;
+    font-style: italic;
+}

@@ -1,0 +1,150 @@
+/* Genel Sıfırlama ve Font Ayarları */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background-color: #F8F7F4; /* Sayfa genelindeki hafif kirli beyaz tonu */
+    color: #333;
+}
+
+/* Ana Konteyner - Esnek (Flex) iki sütunlu yerleşim */
+.about-container {
+    display: flex;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+/* SOL BÖLÜM: Metinsel içerik alanı */
+.content-section {
+    flex: 1; /* Ekranın yarısını kaplar */
+    padding: 80px 100px; /* Geniş ekranlar için iç boşluk */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* İçeriği dikeyde ortalar */
+    align-items: flex-start;
+    box-sizing: border-box;
+    min-height: 100vh; /* Ekran yüksekliği kadar alan kaplar */
+}
+
+/* Dekoratif yıldız simgesi */
+.star-icon {
+    font-size: 30px;
+    color: #063508;
+    margin-bottom: 10px;
+    line-height: 1;
+}
+
+/* Ana sayfa başlığı (Büyük ve kalın) */
+.main-title {
+    font-size: 60px;
+    color: #031004;
+    margin-top: 0;
+    margin-bottom: 40px;
+    font-weight: bold;
+}
+
+/* Sayfa giriş açıklaması metni */
+.description {
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 80%;
+    margin-bottom: 50px;
+}
+
+/* Vizyon ve Misyon başlık ve paragraf düzenlemeleri */
+.vision-mission .block {
+    margin-top: 30px;
+}
+
+.vision-mission h2 {
+    font-size: 20px;
+    color: #1E4620;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.vision-mission p {
+    font-size: 15px;
+    line-height: 1.6;
+    max-width: 90%;
+}
+
+/* SAĞ BÖLÜM: Görsel alanı */
+.image-section {
+    flex: 1; /* Ekranın diğer yarısını kaplar */
+    background-color: #b59b71; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px;
+    box-sizing: border-box;
+}
+
+/* Sağ bölümdeki görselin stili ve gölgesi */
+.image-section img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* **DUYARLILIK (RESPONSIVE) AYARLARI** */
+@media (max-width: 992px) {
+    /* Tablet ve mobil ekranlarda dikey yerleşime geçer */
+    .about-container {
+        flex-direction: column;
+    }
+
+    .content-section {
+        padding: 50px 30px;
+        align-items: center; /* İçeriği merkeze hizalar */
+        text-align: center;
+    }
+    
+    .description, .vision-mission p {
+        max-width: 100%;
+    }
+
+    .image-section {
+        min-height: 400px; /* Mobil için minimum yükseklik */
+    }
+}
+
+/* İkinci Görsel veya Bölüm Alanı */
+.image-section-2 {
+    flex: 1;
+    background-color: #1E4620; /* Koyu yeşil zemin */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 100px;
+    box-sizing: border-box;
+}
+
+/* Slogan metni ve yerleşimi */
+.slogan-content {
+    text-align: center;
+    color: white;
+}
+
+/* Slogan yazı stili (İtalik ve zarif) */
+.slogan-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 55px;
+    line-height: 1.3;
+    margin-bottom: 30px;
+}
+
+/* İmzalı alt çizgi ve harf aralığı */
+.signature {
+    font-family: sans-serif;
+    font-size: 14px;
+    letter-spacing: 5px;
+    border-top: 1px solid rgba(255, 255, 255, 0.5);
+    padding-top: 15px;
+    display: block;
+    margin-top: 30px;
+}

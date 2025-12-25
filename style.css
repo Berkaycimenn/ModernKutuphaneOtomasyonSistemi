@@ -1,0 +1,294 @@
+/* =======================
+   GENEL RESET & BODY
+   Tüm tarayıcı varsayılanlarını sıfırlayıp temel fontu belirler
+======================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+/* =======================
+   NAVBAR
+   Sayfanın üstünde sabit duran, şeffaf siyah arka planlı menü
+======================= */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Menü linklerinin genel stili ve geçiş efekti */
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    padding: 8px 14px;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background-color 0.3s;
+}
+
+/* Üzerine gelindiğinde link arka planını hafifçe belirginleştirir */
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Aktif olan sayfa linkinin vurgulanması */
+.nav-links .active {
+    background-color: #fff;
+    color: #333;
+    border-radius: 4px;
+}
+
+/* Navbar içindeki özel çerçeveli rezervasyon butonu */
+.reservation-btn {
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+/* =======================
+   HERO (SADECE ANASAYFA)
+   Tam ekran arka plan görseli ve merkezi başlık alanı
+======================= */
+.anasayfa .hero-section {
+    min-height: 100vh;
+    background-image: url('../images/arka_plan.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Arka plan görselinin üzerine bulanık ve koyu bir katman ekler */
+.anasayfa .hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0,0,0,0.5);
+    filter: blur(6px);
+    transform: scale(1.02);
+    z-index: 1;
+}
+
+/* Başlık ve butonların bulunduğu ön plandaki içerik */
+.hero-content {
+    color: white;
+    text-align: center;
+    z-index: 2;
+}
+
+.hero-content h1 {
+    font-size: 8vw;
+    letter-spacing: 5px;
+    font-weight: 900;
+}
+
+.hero-content p {
+    font-size: 1.5vw;
+    margin: 20px 0 40px;
+}
+
+/* Hero alanı içindeki butonların yerleşimi */
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Büyük eylem butonlarının (Call to Action) stili */
+.action-btn {
+    padding: 15px 35px;
+    border: 2px solid white;
+    background-color: rgba(0,0,0,0.6);
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.action-btn:hover {
+    background-color: white;
+    color: black;
+}
+
+/* =======================
+   REPEATING STRIP
+   Sayfa içinde kayan veya tekrarlanan yatay metin şeridi
+======================= */
+.repeating-strip {
+    background-color: #dbe4d9;
+    padding: 15px 0;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.strip-content span {
+    color: #2e4d3a;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-right: 50px;
+}
+
+/* =======================
+   MISSION
+   Kurumsal misyon metninin odaklandığı bölüm
+======================= */
+.mission-section {
+    padding: 80px 10%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.mission-content h2 {
+    font-size: 4.5vw;
+    color: #2e4d3a;
+    margin-bottom: 40px;
+}
+
+.mission-text {
+    font-size: 1.2em;
+    max-width: 700px;
+    line-height: 1.6;
+}
+
+/* =======================
+   BÖLÜMLER (CARDS)
+   Yanyana dizilen hizmet veya kategori kartları
+======================= */
+.sections-container {
+    padding: 60px 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cards-wrapper {
+    display: flex;
+    gap: 30px;
+}
+
+.section-card {
+    flex: 1;
+}
+
+.card-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+/* =======================
+   GALERİ (SLIDER)
+   Sağa-sola kaydırılabilir görsel galerisi alanı
+======================= */
+.gallery-section {
+    padding: 80px 0;
+    background-color: #fdfaf5;
+}
+
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 80px;
+    position: relative;
+}
+
+/* Görsellerin dışarı taşmasını engelleyen pencere */
+.slider-window {
+    overflow: hidden;
+}
+
+/* Tüm slide öğelerini yan yana dizen ve kayan taşıyıcı */
+.slider-track {
+    display: flex;
+    gap: 25px;
+    transition: transform 0.6s ease;
+}
+
+/* Her bir slide öğesinin genişlik hesabı (3'lü görünüm için) */
+.slide-item {
+    min-width: calc(33.333% - 17px);
+    height: 350px;
+}
+
+.slide-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+/* Galeri yönlendirme butonları (Önceki/Sonraki) */
+.slider-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #352f3d;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.prev-btn { left: 10px; }
+.next-btn { right: 10px; }
+
+/* =======================
+   FOOTER
+   Sayfanın en altındaki bilgi sütunları ve koyu zemin
+======================= */
+.site-footer {
+    background-color: #224229;
+    color: white;
+    padding: 50px 20px;
+}
+
+.footer-columns {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4,1fr); /* 4 sütunlu ızgara yapısı */
+    gap: 30px;
+}
+
+/* =======================
+   PROFİL / DİĞER SAYFALAR
+   Alt sayfalar için özelleştirilmiş arka plan ayarı
+======================= */
+.profil-wrapper {
+    background: white;
+    color: #333;
+}
+/* =======================
+   OZEL EKLEME: GALERI BASLIGINI ORTALAMA
+======================= */
+.section-title {
+    text-align: center;      /* Yazıyı ortalar */
+    display: block;          /* Satırı tamamen kaplar */
+    width: 100%;             /* Genişliği tam yapar */
+    margin-bottom: 30px;     /* Slider ile arasına boşluk bırakır */
+    font-family: 'Bebas Neue', sans-serif; /* Fontu markana uygun yapar */
+    font-size: 45px;         /* Yazı boyutunu ayarlar */
+    color: #2e4d3a;          /* Sitedeki koyu yeşil tonunu verir */
+}

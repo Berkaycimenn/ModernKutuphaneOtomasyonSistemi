@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kütüphane Giriş</title>
+<link rel="stylesheet" href="../css/giris_style.css">
+</head>
+<body>
+
+<div class="auth-container">
+
+    <!-- Giriş -->
+    <div id="login-section">
+        <h2>Giriş Yap</h2>
+        <div class="input-group">
+            <label>E-posta *</label>
+            <input type="email" id="loginEmail" placeholder="E-posta">
+        </div>
+        <div class="input-group">
+            <label>Şifre *</label>
+            <input type="password" id="loginPassword" placeholder="Şifre">
+        </div>
+        <!-- KVKK Onay Kutusu -->
+        <div class="input-group">
+           <input type="checkbox" id="loginKvk" required style="width:12px; height:12px; accent-color:#555; margin-top:1px;">
+            <div style="font-size:0.85rem; color:#555; margin-left:50px; margin-top:-19px;">
+                Kişisel Verilerin Korunması Kanunu'nu okudum ve kabul ediyorum. 
+                <a href="kvkk.html" target="_blank">Detaylar</a>
+            </div>
+        </div>
+        <button class="btn-primary" onclick="login()">Giriş Yap</button>
+        <p>Üye değil misiniz? <button class="btn-outline" onclick="showRegister()">Üye Ol</button></p>
+    </div>
+
+    <!-- Kayıt -->
+    <div id="register-section" class="hidden">
+        <h2>Üye Ol</h2>
+        <div class="input-group">
+            <label>Ad *</label>
+            <input type="text" id="regAd" placeholder="Ad">
+        </div>
+        <div class="input-group">
+            <label>Soyad *</label>
+            <input type="text" id="regSoyad" placeholder="Soyad">
+        </div>
+        <div class="input-group">
+            <label>E-posta *</label>
+            <input type="email" id="regEmail" placeholder="E-posta">
+        </div>
+        <div class="input-group">
+            <label>Şifre *</label>
+            <input type="password" id="regSifre" placeholder="Şifre">
+            <div class="info-text">Minimum 6 karakter</div>
+        </div>
+        <!-- KVKK Onay Kutusu -->
+        <div class="input-group">
+            <input type="checkbox" id="regKvk" required>
+            <div style="font-size:0.85rem; color:#555; margin-left:25px; margin-top:3px;">
+                Kişisel Verilerin Korunması Kanunu'nu okudum ve kabul ediyorum. 
+                <a href="kvkk.html" target="_blank">Detaylar</a>
+            </div>
+        </div>
+        <button class="btn-primary" onclick="register()">Üye Ol</button>
+        <p><button class="btn-outline" onclick="showLogin()">Giriş Ekranına Dön</button></p>
+    </div>
+
+</div>
+
+<script src="../js/script.js"></script>
+</body>
+</html>
